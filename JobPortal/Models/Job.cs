@@ -23,7 +23,7 @@ namespace JobPortal.Models
         public string? Location { get; set; }
 
         [Required]
-        public decimal? Salary { get; set; }
+        public int? Salary { get; set; }
 
         [Required]
         public DateTime? CreatedDate { get; set; }
