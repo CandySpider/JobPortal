@@ -6,6 +6,10 @@ namespace JobPortal.Models
     {
         [Key]
         public int JobId { get; set; }
+        [Required]
+        public int EmployerId { get; set; }
+        [Required]
+        public int SkillSetId { get; set; }
 
         [Required]
         public string JobTitle { get; set; } = string.Empty;
@@ -16,8 +20,7 @@ namespace JobPortal.Models
         [Required]
         public string? JobDescription { get; set; }
 
-        [Required]
-        public string? Requirements { get; set; }
+       
 
         [Required]
         public string? Location { get; set; }
@@ -30,8 +33,9 @@ namespace JobPortal.Models
         [Required]
         public DateTime ApplicationDeadline { get; set; }
 
-        // Additional job listing information can be added as properties here
         public string JobType { get; set; } = string.Empty;   //remote, hybrid, on-site
-        public DateTime PostedDate { get; set; }
+
+        public SkillSet SkillSet { get; set; } = null!;
+        public Employer Employer { get; set; } = null!;
     }
 }

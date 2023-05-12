@@ -25,7 +25,8 @@ namespace JobPortal.Models
 
         public IEnumerable<Application> GetApplicationsByEmail (string email)
         {
-            return _jobPortalDbContext.Applications.Where(p => p.ApplicantEmail == email);
+            return null;
+           // return _jobPortalDbContext.Applications.Where(p => p.CandidateProfil);
         }
 
 

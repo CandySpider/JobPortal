@@ -4,6 +4,7 @@ using JobPortal.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JobPortal.Migrations
 {
     [DbContext(typeof(JobPortalDbContext))]
-    partial class JobPortalDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230512104352_JobModified")]
+    partial class JobModified
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -191,11 +193,21 @@ namespace JobPortal.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SkillId"), 1L, 1);
 
+                    b.Property<int?>("SkillId1")
+                        .HasColumnType("int");
+
                     b.Property<string>("SkillName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("SkillSetId")
+                        .HasColumnType("int");
+
                     b.HasKey("SkillId");
+
+                    b.HasIndex("SkillId1");
+
+                    b.HasIndex("SkillSetId");
 
                     b.ToTable("Skills");
                 });
@@ -211,21 +223,6 @@ namespace JobPortal.Migrations
                     b.HasKey("SkillSetId");
 
                     b.ToTable("SkillSets");
-                });
-
-            modelBuilder.Entity("SkillSkillSet", b =>
-                {
-                    b.Property<int>("SkillSetsSkillSetId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SkillsSkillId")
-                        .HasColumnType("int");
-
-                    b.HasKey("SkillSetsSkillSetId", "SkillsSkillId");
-
-                    b.HasIndex("SkillsSkillId");
-
-                    b.ToTable("SkillSkillSet");
                 });
 
             modelBuilder.Entity("JobPortal.Models.Application", b =>
@@ -288,19 +285,15 @@ namespace JobPortal.Migrations
                     b.Navigation("SkillSet");
                 });
 
-            modelBuilder.Entity("SkillSkillSet", b =>
+            modelBuilder.Entity("JobPortal.Models.Skill", b =>
                 {
-                    b.HasOne("JobPortal.Models.SkillSet", null)
-                        .WithMany()
-                        .HasForeignKey("SkillSetsSkillSetId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("JobPortal.Models.Skill", null)
-                        .WithMany()
-                        .HasForeignKey("SkillsSkillId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany("SkillList")
+                        .HasForeignKey("SkillId1");
+
+                    b.HasOne("JobPortal.Models.SkillSet", null)
+                        .WithMany("Skills")
+                        .HasForeignKey("SkillSetId");
                 });
 
             modelBuilder.Entity("JobPortal.Models.Candidate", b =>
@@ -313,6 +306,16 @@ namespace JobPortal.Migrations
             modelBuilder.Entity("JobPortal.Models.Employer", b =>
                 {
                     b.Navigation("Jobs");
+                });
+
+            modelBuilder.Entity("JobPortal.Models.Skill", b =>
+                {
+                    b.Navigation("SkillList");
+                });
+
+            modelBuilder.Entity("JobPortal.Models.SkillSet", b =>
+                {
+                    b.Navigation("Skills");
                 });
 #pragma warning restore 612, 618
         }

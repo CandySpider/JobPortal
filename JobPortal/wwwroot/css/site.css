@@ -20,15 +20,39 @@ html, body {
     height: 100%;
     width: 100%;
 }
+
 .text-container {
-    background-image: url('../images/website-background.jpg'); 
-    background-size:auto;
-    background-position:center;
-    padding: 50px;
-    height:100%;
-    width:100%;
+    background-image: url('../images/website-background.jpg');
+    background-size: inherit;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    overflow: hidden;
+    width: 100%;
+    height: inherit;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.main-page-text {
+    background-color: rgba(139, 69, 19, 0.5); /* brown with 50% opacity */
+    padding: 25px; /* add some padding to the box */
+    border-radius: 5px; /* round the corners of the box */
 }
 
 .text-white {
-    color: #fff; 
+    color: #fff;
+    font-family: Arial, sans-serif;
+    transform: scale(1,1);
+    margin: 1em;
+    font-weight: bold;
 }
+.navbar-button {
+    background-color: rgba(139, 69, 19, 0.5);
+}
+.navbar-text2 {
+    color: #8b4513;
+}
+

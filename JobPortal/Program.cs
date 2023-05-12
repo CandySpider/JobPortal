@@ -31,5 +31,6 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
+DbInitializer.DeleteAllData(app);
+DbInitializer.FirstTime(app);
 app.Run();

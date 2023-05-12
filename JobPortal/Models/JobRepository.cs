@@ -7,7 +7,7 @@
         _jobPortalDbContext = jobPortalDbContext;
         }
         public IEnumerable<Job> AllJobs
-        {
+        {  
             get
             {
                 return _jobPortalDbContext.Jobs;

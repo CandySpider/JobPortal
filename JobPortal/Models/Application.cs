@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace JobPortal.Models
 {
@@ -10,16 +11,14 @@ namespace JobPortal.Models
         [Required]
         public int JobId { get; set; }
 
-        [Required] public string ApplicantName { get; set; } = string.Empty;
-
-        [Required] public string ApplicantEmail { get; set; } = string.Empty;
-
-        [Required] public string ResumeFileName { get; set; } = string.Empty;
+        [Required]
+        public int CandidateId { get; set; }
 
         [Required]
         public DateTime ApplicationDate { get; set; }
 
-        // Additional application information can be added as properties here
+        public Job Job { get; set; } = null!;
+        public Candidate Candidate { get; set; } = null!;
     }
 
 }
