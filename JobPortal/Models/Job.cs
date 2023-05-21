@@ -11,13 +11,17 @@ namespace JobPortal.Models
         [Required]
         public int SkillSetId { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please enter the job title.")]
+        [StringLength(100)]
+        
         public string JobTitle { get; set; } = string.Empty;
 
         [Required]
+        [StringLength(50)]
         public string CompanyName { get; set; } = string.Empty;
 
-        [Required]
+        [Required(ErrorMessage = "Please write a description about the job posting.")]
+        [StringLength(10000,MinimumLength = 100,ErrorMessage = "The job description should be at least 100 characters long.")]
         public string? JobDescription { get; set; }
 
        

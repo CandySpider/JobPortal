@@ -19,4 +19,17 @@
     <Folder Include="Images\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\images\SVGs\audi-11.svg" />
+    <None Include="wwwroot\images\SVGs\bmw.svg" />
+    <None Include="wwwroot\images\SVGs\bosch.svg" />
+    <None Include="wwwroot\images\SVGs\coca-cola-6.svg" />
+    <None Include="wwwroot\images\SVGs\dacia-2021-logo.svg" />
+    <None Include="wwwroot\images\SVGs\intel-7.svg" />
+    <None Include="wwwroot\images\SVGs\internet-techologies.svg" />
+    <None Include="wwwroot\images\SVGs\naughty-dog-logo.svg" />
+    <None Include="wwwroot\images\SVGs\oracle-2.svg" />
+    <None Include="wwwroot\images\SVGs\toyota-1.svg" />
+  </ItemGroup>
+
 </Project>

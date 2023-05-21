@@ -5,7 +5,7 @@
         {<div class="card-body">
             <div class="row">
                 <div class="col-md-2">
-                    <img src="company_logo.png" alt="Company Logo" class="img-fluid">
+                    <img src="@i.Employer.ProfilePictureUrl" alt="Company Logo" class="img-fluid">
                 </div>
                 <div class="col-md-10">
                     <h5 class="card-title">@i.JobTitle</h5>
@@ -15,9 +15,10 @@
                     <p class="card-text">Experience Level: Junior/Intermediate/Senior</p>
                     <h6 class="card-subtitle mb-2 text-muted">Skills Required</h6>
                     <ul class="list-unstyled">
-                     @*   @foreach (var j i.SkillSet.Skills )
-                        {<li>@j.SkillName</li>
-                        }*@
+                          @if(i.SkillSet.Skills!=null)
+                        { foreach (var j in i.SkillSet.Skills )
+                                                {<li>@j.SkillName</li>}
+                        }
                     </ul>
                     <a href="#" class="card-link">Apply Now</a>
                 </div>

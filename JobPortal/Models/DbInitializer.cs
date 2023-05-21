@@ -1,4 +1,5 @@
-﻿namespace JobPortal.Models
+﻿using System.Web;
+namespace JobPortal.Models
 {
     public class DbInitializer
     {
@@ -18,9 +19,17 @@
                 SkillSet mySkillSet1 = new SkillSet();
                 SkillSet mySkillSet2 = new SkillSet();
                 SkillSet mySkillSet3 = new SkillSet();
+                Employer myEmployer1 = new Employer();
+                Employer myEmployer2 = new Employer();
+                Employer myEmployer3 = new Employer();
                 mySkillSet1.Skills = new List<Skill>() { mySkill1, mySkill4, mySkill5 };
                 mySkillSet2.Skills = new List<Skill>() { mySkill2, mySkill6, mySkill8};
                 mySkillSet3.Skills = new List<Skill>() { mySkill2, mySkill6};
+                myEmployer1.ProfilePictureUrl = "images/SVGs/bmw.svg";
+                myEmployer2.ProfilePictureUrl = "images/SVGs/coca-cola-6.svg";
+                myEmployer3.ProfilePictureUrl = "images/SVGs/audi-11.svg";
+                
+
                 context.AddRange(
                      mySkill1,
                      mySkill2,
@@ -41,12 +50,13 @@
                           ApplicationDeadline = new DateTime(2022, 2, 7, 12, 31, 40),
                           JobType = "Remote",
                           SkillSet = mySkillSet1,
-                          Employer = new Employer()
+                          Employer = myEmployer1,
+                          
                       },
                       new Job
                       {
                           JobTitle = "Server",
-                          CompanyName = "Mcdonald's",
+                          CompanyName = "Coca-cola",
                           JobDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sem lectus, vulputate nec vulputate ac, consectetur rutrum lorem. Etiam dignissim nec sem ut ultricies. Proin quam elit, rhoncus sed eleifend at, mattis vitae enim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc sit amet tincidunt elit, ac vulputate urna. Maecenas scelerisque commodo dolor eu eleifend. Aliquam aliquam magna lorem, et egestas nibh feugiat sed. Integer erat nulla, mollis sed egestas nec, aliquet id risus. Vivamus pharetra tortor condimentum ex imperdiet venenatis. Nunc mollis lorem quis orci condimentum gravida. Nunc imperdiet purus ipsum, at volutpat ipsum bibendum eu. Nullam ex diam, convallis non interdum nec, imperdiet sit amet elit. Fusce tempus enim in ligula viverra sagittis. Nullam in neque nibh.",
                           Location = "Bucharest",
                           Salary = 3000,
@@ -54,7 +64,7 @@
                           ApplicationDeadline = new DateTime(2023, 1, 1, 7, 31, 40),
                           JobType = "Hybrid",
                           SkillSet = mySkillSet2,
-                          Employer = new Employer()
+                          Employer = myEmployer2
                       },
                         new Job
                         {
@@ -67,7 +77,7 @@
                             ApplicationDeadline = new DateTime(2022, 2, 7, 12, 31, 40),
                             JobType = "Remote",
                             SkillSet = mySkillSet3,
-                            Employer = new Employer()
+                            Employer = myEmployer3
                         }
 
 
@@ -88,9 +98,8 @@
             context.Applications.RemoveRange(context.Applications.ToList());
             context.Employers.RemoveRange(context.Employers.ToList());    
             context.Candidates.RemoveRange(context.Candidates.ToList());
-            context.CompanyProfiles.RemoveRange(context.CompanyProfiles.ToList());
-            context.CandidateProfiles.RemoveRange(context.CandidateProfiles.ToList());
             context.SkillSets.RemoveRange(context.SkillSets.ToList());
+            context.Skills.RemoveRange(context.Skills.ToList());
             context.SaveChanges ();
         }
     }

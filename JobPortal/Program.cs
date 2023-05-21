@@ -11,7 +11,10 @@ builder.Services.AddDbContext<JobPortalDbContext>( options =>
     options.UseSqlServer(builder.Configuration["ConnectionStrings:JobPortalDbContextConnection"]);
 });
 builder.Services.AddScoped<IJobRepository,JobRepository>();
+builder.Services.AddScoped<ISkillSetRepository,SkillSetRepository>();
+builder.Services.AddScoped<ISkillRepository,SkillRepository>();
 builder.Services.AddScoped<IApplicationRepository,ApplicationRepository>();
+builder.Services.AddScoped<IEmployerRepository,EmployerRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
