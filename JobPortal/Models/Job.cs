@@ -1,14 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System.ComponentModel.DataAnnotations;
 
 namespace JobPortal.Models
 {
     public class Job
     {
         [Key]
+        [BindNever]
         public int JobId { get; set; }
-        [Required]
+        [BindNever]
         public int EmployerId { get; set; }
-        [Required]
+        [BindNever]
         public int SkillSetId { get; set; }
 
         [Required(ErrorMessage = "Please enter the job title.")]
@@ -29,17 +31,18 @@ namespace JobPortal.Models
         [Required]
         public string? Location { get; set; }
 
-        [Required]
         public int? Salary { get; set; }
 
-        [Required]
+        [BindNever]
         public DateTime? CreatedDate { get; set; }
         [Required]
         public DateTime ApplicationDeadline { get; set; }
 
         public string JobType { get; set; } = string.Empty;   //remote, hybrid, on-site
 
-        public SkillSet SkillSet { get; set; } = null!;
-        public Employer Employer { get; set; } = null!;
+        [BindNever]
+        public SkillSet? SkillSet { get; set; }
+        [BindNever]
+        public Employer? Employer { get; set; }
     }
 }

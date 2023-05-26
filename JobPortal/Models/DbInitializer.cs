@@ -1,8 +1,17 @@
-﻿using System.Web;
+﻿using Microsoft.AspNetCore.Identity;
+using System.Web;
 namespace JobPortal.Models
 {
     public class DbInitializer
     {
+        private static string email1 = "admin@jobportal.com";
+        private static string email2 = "candidate@jobportal.com";
+        private static string email3 = "employer@jobportal.com";
+        private static string userName1 = "admin";
+        private static string userName2 = "candidate";
+        private static string userName3 = "employer";
+
+
         public static void FirstTime(IApplicationBuilder applicationBuilder) 
             {
             JobPortalDbContext context = applicationBuilder.ApplicationServices.CreateScope().ServiceProvider.GetRequiredService<JobPortalDbContext>();
@@ -102,5 +111,6 @@ namespace JobPortal.Models
             context.Skills.RemoveRange(context.Skills.ToList());
             context.SaveChanges ();
         }
+    
     }
 }

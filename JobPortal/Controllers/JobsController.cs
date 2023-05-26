@@ -28,13 +28,18 @@ namespace JobPortal.Controllers
         }
         [HttpPost]
         public IActionResult Post(JobPostingViewModel myJopPostingViewModel)
-        {     
-                Employer employer = new Employer();
+        {   Employer employer = new Employer();
+            employer.ProfileDescription = "something something";
+            employer.ProfileName = "Nice";
+            if (ModelState.IsValid)
+            {
+
+
                 _jobRepository.CreateJob(myJopPostingViewModel.Job, myJopPostingViewModel.SkillList, employer);
                 return RedirectToAction("PostComplete");
+            }
             
-            
-            //return View(myJopPostingViewModel);
+            return View(myJopPostingViewModel);
 
         }
         public IActionResult PostComplete()

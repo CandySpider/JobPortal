@@ -1,10 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System.ComponentModel.DataAnnotations;
 
 namespace JobPortal.Models
 {
     public class Skill
     {
-        [Key] 
+        [Key]
+        [BindNever]
         public int SkillId { get; set; }
 
         [Required]

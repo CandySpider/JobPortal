@@ -25,10 +25,11 @@
             <li><a asp-controller="About" asp-action="Index" class="nav-link px-2 navbar-text2">About</a></li>
         </ul>
 
-        <div class="col-md-3 text-end m-3">
+       @* <div class="col-md-3 text-end m-3">
             <button type="button" class="btn me-2">Login</button>
             <button type="button" class="btn navbar-button">Sign-up</button>
-        </div>
+        </div>*@
+        <partial name="_LoginPartial" />
     </header>
 
             @RenderBody()
