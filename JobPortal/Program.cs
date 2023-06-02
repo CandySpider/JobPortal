@@ -14,7 +14,7 @@ builder.Services.AddDbContext<JobPortalDbContext>( options =>
     options.UseSqlServer(builder.Configuration["ConnectionStrings:JobPortalDbContextConnection"]);
 });
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<JobPortalDbContext>();
 
@@ -24,15 +24,6 @@ builder.Services.AddScoped<ISkillSetRepository,SkillSetRepository>();
 builder.Services.AddScoped<ISkillRepository,SkillRepository>();
 builder.Services.AddScoped<IApplicationRepository,ApplicationRepository>();
 builder.Services.AddScoped<IEmployerRepository,EmployerRepository>();
-builder.Services.AddAuthorization(options =>
-{
-    options.AddPolicy("AdminRole",
-         policy => policy.RequireRole("Administrator"));
-    options.AddPolicy("CandidateRole",
-        policy => policy.RequireRole("Candidate"));
-    options.AddPolicy("EmployerRole",
-        policy => policy.RequireRole("EMPLOYER"));
-});
 var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

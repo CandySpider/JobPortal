@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using System.Web
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -21,8 +22,18 @@
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
             <li><a asp-controller="Home" asp-action="Index" class="nav-link px-2 navbar-text2">Home</a></li>
             <li><a asp-controller="Jobs" asp-action="Index" class="nav-link px-2 navbar-text2">Jobs</a></li>
+            @if (User.IsInRole("Employer"))
+            {
+                <li><a asp-controller="Employer" asp-action="Index" class="nav-link px-2 navbar-text2">Employer dashboard</a></li>
+            }
+            @if(User.IsInRole("Candidate"))
+            {
+                <li><a asp-controller="Candidate" asp-action="Index" class="nav-link px-2 navbar-text2">Candidate dashboard</a></li>
+            }
+            <li></li>
             <li><a asp-controller="Contact" asp-action="Index" class="nav-link px-2 navbar-text2">Contact</a></li>
             <li><a asp-controller="About" asp-action="Index" class="nav-link px-2 navbar-text2">About</a></li>
+          
         </ul>
 
        @* <div class="col-md-3 text-end m-3">

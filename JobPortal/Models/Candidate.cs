@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace JobPortal.Models
 {
@@ -16,7 +18,10 @@ namespace JobPortal.Models
         public string? ProfilePhotoUrl { get; set; }
         public string? ResumeFileUrl { get; set; }
 
-        public ICollection<Application> Applications { get; } =new List<Application>();
-        
+        public ICollection<Application> Applications { get; } = new List<Application>();
+        public string? ApplicationUserId { get; set; }
+        [ForeignKey(nameof(ApplicationUserId))]
+        public  ApplicationUser? ApplicationUser { get; set; }
+
     }
 }

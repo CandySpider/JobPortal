@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace JobPortal.Models
 {
     public class Employer
@@ -12,6 +14,9 @@ namespace JobPortal.Models
         public string ProfileName { get; set; } = string.Empty;
         
         public string ProfileDescription { get; set; } = string.Empty;
-        public ICollection<Job>? Jobs{get; set;} 
+        public ICollection<Job>? Jobs{get; set;}
+        public string? ApplicationUserId { get; set; }
+        [ForeignKey(nameof(ApplicationUserId))]
+        public virtual ApplicationUser? ApplicationUser { get; set; }
     }
 }
