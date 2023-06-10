@@ -103,6 +103,17 @@ namespace JobPortal.Models
             context.Skills.RemoveRange(context.Skills.ToList());
             context.SaveChanges ();
         }
+
+        public static void DeleteAllUsers (IApplicationBuilder applicationBuilder)
+        {
+            JobPortalDbContext context = applicationBuilder.ApplicationServices.CreateScope().ServiceProvider.GetRequiredService<JobPortalDbContext>();
+            context.UserClaims.RemoveRange(context.UserClaims.ToList());
+            context.UserLogins.RemoveRange(context.UserLogins.ToList());
+            context.UserRoles.RemoveRange(context.UserRoles.ToList());
+            context.Users.RemoveRange(context.Users.ToList());
+            context.UserTokens.RemoveRange(context.UserTokens.ToList());
+            context.SaveChanges();
+        }
     
     }
 }

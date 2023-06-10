@@ -5,5 +5,6 @@
         public Employer GetEmployerById(int id);
         public ICollection<Employer> GetAllEmployers();
         public Employer GetEmployerByName(string name);
+        public void CreateEmployer(string userId);
     }
 }

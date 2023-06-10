@@ -24,6 +24,7 @@ builder.Services.AddScoped<ISkillSetRepository,SkillSetRepository>();
 builder.Services.AddScoped<ISkillRepository,SkillRepository>();
 builder.Services.AddScoped<IApplicationRepository,ApplicationRepository>();
 builder.Services.AddScoped<IEmployerRepository,EmployerRepository>();
+builder.Services.AddScoped<ICandidateRepository,CandidateRepository>();
 var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -44,7 +45,6 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 app.MapRazorPages();
-DbInitializer.DeleteAllData(app);
 DbInitializer.FirstTime(app);
 
 using (var roleScope = app.Services.CreateScope())

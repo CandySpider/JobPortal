@@ -30,13 +30,17 @@ namespace JobPortal.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<ApplicationUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly ICandidateRepository _candidateRepository;
+        private readonly IEmployerRepository _employerRepository;
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
             IUserStore<ApplicationUser> userStore,
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            ICandidateRepository candidateRepository,
+            IEmployerRepository employerRepository)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -44,6 +48,8 @@ namespace JobPortal.Areas.Identity.Pages.Account
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _candidateRepository = candidateRepository;
+            _employerRepository = employerRepository;
         }
 
         /// <summary>
@@ -126,6 +132,17 @@ namespace JobPortal.Areas.Identity.Pages.Account
                 {
                     _logger.LogInformation("User created a new account with password.");
                     await _userManager.AddToRoleAsync(user, Input.Role);
+                    //add candidate reference
+                    if (Input.Role.ToLower() == "candidate")
+                    {
+                        _candidateRepository.CreateCandidate(user.Id, "0722222222", user.UserName);
+                    }
+                    //add employer reference
+                    if (Input.Role.ToLower() == "employer")
+                    {
+                        _employerRepository.CreateEmployer(user.Id);
+                    }
+
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));

@@ -1,10 +1,17 @@
 ﻿@model Employer
-<h1>Let's create your profile</h1>
-<div class="mb-3">
-    <label for="formGroupExampleInput" class="form-label">Example label</label>
-    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder">
-</div>
-<div class="mb-3">
-    <label for="formGroupExampleInput2" class="form-label">Another label</label>
-    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input placeholder">
+<div class="container">
+    <h1>Let's create your profile</h1>
+    <form>
+        <div class="col-10">
+            <label asp-for="ProfileName">Name:</label>
+            <input asp-for="ProfileName" type="text" class="form-control">
+            <span asp-validation-for="ProfileName" class="text-danger"></span>
+       </div>
+       <div class="col-10">
+            <label asp-for = "ProfileDescription">Description</label>
+            <textarea asp-for = "ProfileDescription" class="form-control resizable"></textarea>
+            <span asp-validation-for="ProfileDescription" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 </div>

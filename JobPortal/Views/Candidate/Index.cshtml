@@ -1,2 +1,22 @@
-﻿<h1>Candidate page???????</h1>
-@User.Identity.Name
+﻿@model Candidate
+<div class="background-image2">
+<div class = "container user-container">
+    @if (Model != null)
+    {
+        <div class="row-cols-2"><h2>User name: @Model.CandidateName</h2></div>
+        <div class="row-cols-2"><h2>Phone number: @Model.PhoneNumber</h2></div>
+        <div class="row-cols-3"><h2>Number of job applications: @Model.Applications.Count</h2></div>
+        <div class="row-cols-4">
+            <h2>Profile Photo</h2>
+            <img src="/images/ProfilePhotos/@Model.ProfilePhotoUrl" alt="Profile Photo" />
+        </div>
+        <div class="row-cols-4">
+        <a href="~/resumes/@Model.ResumeFileUrl">Resume</a>
+        </div>
+    }
+    <div class="row-cols-4">
+    <a asp-action="CreateProfile">Update Profile</a>
+    </div>
+</div>
+<div class="space-div"></div>
+</div>

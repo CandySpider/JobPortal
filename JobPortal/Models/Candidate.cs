@@ -11,8 +11,7 @@ namespace JobPortal.Models
         [Required]
         public string CandidateName { get; set; } = string.Empty;
         [Required]
-        public string EmailAddress { get; set; } = string.Empty;
-        [Required]
+        [Phone(ErrorMessage ="Invalid phone number")]
         public string PhoneNumber { get; set; } = string.Empty;
 
         public string? ProfilePhotoUrl { get; set; }

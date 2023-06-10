@@ -8,6 +8,14 @@
             _jobPortalDbContext = jobPortalDbContext;
         }
 
+        public void CreateEmployer(string userId)
+        {
+            Employer myEmployer = new Employer();
+            myEmployer.ApplicationUserId = userId;
+            _jobPortalDbContext.Employers.Add(myEmployer);
+            _jobPortalDbContext.SaveChanges();
+        }
+
         public ICollection<Employer> GetAllEmployers()
         {
             return _jobPortalDbContext.Employers.ToList();

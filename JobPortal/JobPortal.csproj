@@ -30,4 +30,9 @@
     <None Include="wwwroot\images\SVGs\toyota-1.svg" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\resumes\" />
+    <Folder Include="wwwroot\images\profilePhotos\" />
+  </ItemGroup>
+
 </Project>
