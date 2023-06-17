@@ -1,17 +1,28 @@
 ﻿@model Employer
-<div class="container">
+<div class="background-image4">
+<div class="container form-container">
     <h1>Let's create your profile</h1>
-    <form>
-        <div class="col-10">
+    <h3>Upload your profile photo!</h3>
+    @using (Html.BeginForm("ProfilePhotoUpload", "Employer", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <input type="file" name="photo" id="photo" />
+        <input type="submit" value="Upload" />
+    }
+    <form class="form-check" asp-action="CreateProfile" method="post" role="form">
+        <div class="form-group">
             <label asp-for="ProfileName">Name:</label>
             <input asp-for="ProfileName" type="text" class="form-control">
             <span asp-validation-for="ProfileName" class="text-danger"></span>
        </div>
-       <div class="col-10">
+       <div class="form-group">
             <label asp-for = "ProfileDescription">Description</label>
             <textarea asp-for = "ProfileDescription" class="form-control resizable"></textarea>
             <span asp-validation-for="ProfileDescription" class="text-danger"></span>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+
+        <button type="submit" class="btn navbar-button">Submit</button>
     </form>
 </div>
+<div class="space-div">
+</div>
+</div

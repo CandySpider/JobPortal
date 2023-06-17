@@ -10,17 +10,35 @@ namespace JobPortal.Models
             _jobPortalDbContext = jobPortalDbContext;
         }
 
-        public IEnumerable<Application> AllApplications
+
+        public void CreateApplication(Job job, Candidate candidate)
         {
-            get
+            Application myApplication = new Application();
+            myApplication.Job = job;
+            myApplication.Candidate = candidate;
+            myApplication.ApplicationDate = DateTime.Now;
+            if(_jobPortalDbContext.Applications.Where(e => e.Job == job && e.Candidate == candidate).Count() == 0 )
             {
-                return _jobPortalDbContext.Applications;
+                _jobPortalDbContext.Applications.Add(myApplication);
+                _jobPortalDbContext.SaveChanges();
             }
         }
-        
-        public IEnumerable<Application> GetApplicationsByJobId(int jobId)
+
+        public List<Application> GetApplicationsByJobId(int jobId)
         {
-            return _jobPortalDbContext.Applications.Where(p => p.JobId == jobId);
+            return _jobPortalDbContext.Applications.Where(p => p.JobId == jobId).ToList();
+        }
+        
+        public List<Application> GetApplicationsByCandidateId(int candidateId) 
+        {
+            return _jobPortalDbContext.Applications.Where(e => e.CandidateId == candidateId).Include(e => e.Job).ToList();
+        }
+
+        public void DeleteApplication (int applicationId)
+        {    
+            Application myApplication = _jobPortalDbContext.Applications.Where(e => e.ApplicationId == applicationId).FirstOrDefault();
+            _jobPortalDbContext.Applications.Remove(myApplication);
+            _jobPortalDbContext.SaveChanges();
         }
 
 

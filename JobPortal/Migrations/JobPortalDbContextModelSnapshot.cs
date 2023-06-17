@@ -45,7 +45,7 @@ namespace JobPortal.Migrations
 
                     b.HasIndex("JobId");
 
-                    b.ToTable("Applications");
+                    b.ToTable("Applications", (string)null);
                 });
 
             modelBuilder.Entity("JobPortal.Models.ApplicationUser", b =>
@@ -148,7 +148,7 @@ namespace JobPortal.Migrations
                         .IsUnique()
                         .HasFilter("[ApplicationUserId] IS NOT NULL");
 
-                    b.ToTable("Candidates");
+                    b.ToTable("Candidates", (string)null);
                 });
 
             modelBuilder.Entity("JobPortal.Models.Employer", b =>
@@ -180,7 +180,7 @@ namespace JobPortal.Migrations
                         .IsUnique()
                         .HasFilter("[ApplicationUserId] IS NOT NULL");
 
-                    b.ToTable("Employers");
+                    b.ToTable("Employers", (string)null);
                 });
 
             modelBuilder.Entity("JobPortal.Models.Job", b =>
@@ -235,7 +235,7 @@ namespace JobPortal.Migrations
 
                     b.HasIndex("SkillSetId");
 
-                    b.ToTable("Jobs");
+                    b.ToTable("Jobs", (string)null);
                 });
 
             modelBuilder.Entity("JobPortal.Models.Skill", b =>
@@ -252,7 +252,7 @@ namespace JobPortal.Migrations
 
                     b.HasKey("SkillId");
 
-                    b.ToTable("Skills");
+                    b.ToTable("Skills", (string)null);
                 });
 
             modelBuilder.Entity("JobPortal.Models.SkillSet", b =>
@@ -265,7 +265,7 @@ namespace JobPortal.Migrations
 
                     b.HasKey("SkillSetId");
 
-                    b.ToTable("SkillSets");
+                    b.ToTable("SkillSets", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -417,7 +417,7 @@ namespace JobPortal.Migrations
 
                     b.HasIndex("SkillsSkillId");
 
-                    b.ToTable("SkillSkillSet");
+                    b.ToTable("SkillSkillSet", (string)null);
                 });
 
             modelBuilder.Entity("JobPortal.Models.Application", b =>

@@ -1,0 +1,39 @@
+﻿@model List<Job>
+@if (Model.Count == 0)
+{
+ <h1>Looks like your job board is empty.</h1>   
+}
+else 
+{
+<div class="background-image3">
+
+    <div class="container mt-5">
+        <div class="card">
+            @foreach (var i in Model)
+            {
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <h5 class="card-title">@i.JobTitle</h5>
+                            <p class="card-text">@i.Location</p>
+                            <p class="card-text">@i.JobDescription</p>
+                            <p class="card-text">Experience Level: Junior/Intermediate/Senior</p>
+                            <h6 class="card-subtitle mb-2 text-muted">Skills Required</h6>
+                            <ul class="list-unstyled">
+                                @if (i.SkillSet.Skills != null)
+                                {
+                                    foreach (var j in i.SkillSet.Skills)
+                                    {
+                                        <li>@j.SkillName</li>
+                                    }
+                                }
+                            </ul>
+                            <button class="navbar-button"><a asp-action="DeleteJobPosting" asp-route-id="@i.JobId">Delete</a></button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+}

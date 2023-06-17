@@ -3,7 +3,7 @@
 <div class = "container user-container">
     @if (Model != null)
     {
-        <div class="row-cols-2"><h2>User name: @Model.CandidateName</h2></div>
+        <div class="row-cols-2"><h2>Name: @Model.CandidateName</h2></div>
         <div class="row-cols-2"><h2>Phone number: @Model.PhoneNumber</h2></div>
         <div class="row-cols-3"><h2>Number of job applications: @Model.Applications.Count</h2></div>
         <div class="row-cols-4">
@@ -14,9 +14,12 @@
         <a href="~/resumes/@Model.ResumeFileUrl">Resume</a>
         </div>
     }
-    <div class="row-cols-4">
-    <a asp-action="CreateProfile">Update Profile</a>
-    </div>
+        <div class="row-cols-4">
+            <a asp-action="JobApplications">Check your job applications</a>
+        </div>
+        <div class="row-cols-4">
+        <a asp-action="CreateProfile">Update Profile</a>
+        </div>
 </div>
 <div class="space-div"></div>
 </div>

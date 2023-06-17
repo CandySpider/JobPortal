@@ -9,9 +9,11 @@ namespace JobPortal.Models
         public int ApplicationId { get; set; }
 
         [Required]
+        [ForeignKey("Job")]
         public int JobId { get; set; }
 
         [Required]
+        [ForeignKey("Candidate")]
         public int CandidateId { get; set; }
 
         [Required]

@@ -1,4 +1,5 @@
-﻿namespace JobPortal.Models
+﻿using Microsoft.EntityFrameworkCore;
+namespace JobPortal.Models
 {
     public class CandidateRepository : ICandidateRepository
     {
@@ -11,7 +12,7 @@
         public Candidate GetCandidateByUserName(string name)
         {
             if (name == null) throw new ArgumentNullException("Candidate Name cannot be null!");
-            return _jobPortalDbContext.Candidates.Where(e => e.ApplicationUser.UserName == name).FirstOrDefault();
+            return _jobPortalDbContext.Candidates.Where(e => e.ApplicationUser.UserName == name).Include(e => e.Applications).FirstOrDefault();
         }
 
         public ICollection<Candidate> GetCandidateByName(string name)

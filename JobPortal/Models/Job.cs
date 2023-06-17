@@ -44,5 +44,8 @@ namespace JobPortal.Models
         public SkillSet? SkillSet { get; set; }
         [BindNever]
         public Employer? Employer { get; set; }
+
+        [BindNever]
+        public List<Application> Applications { get;} = new List<Application>();
     }
 }

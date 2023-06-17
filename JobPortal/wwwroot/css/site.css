@@ -91,6 +91,12 @@ html, body {
     background-repeat: no-repeat;
     padding-top: 50px;
 }
+.background-image4 {
+    background-image: url("../images/business-center.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-top: 50px;
+}
 .space-div{
     width: 25em;
     height: 25em;

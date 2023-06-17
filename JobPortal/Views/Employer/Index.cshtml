@@ -1,3 +1,24 @@
-﻿<h1>Employer page?hmmmm</h1>
-@User.Identity.Name
-<a asp-action="CreateProfile">Let's create your profile!</a>
+﻿@model Employer
+<div class="background-image4">
+<div class = "container user-container">
+    @if (Model != null)
+    {
+        <div class="row-cols-2"><h2>Employer name: @Model.ProfileName</h2></div>
+        <div class="row-cols-2"><h2>Company description: @Model.ProfileDescription</h2></div>
+        <div class="row-cols-4">
+            <h2>Profile Photo</h2>
+            <img src="/images/profilePhotos/@Model.ProfilePictureUrl" alt="company profile picture" />
+        </div>
+    }
+    <div class="row-cols-4">
+        <a asp-action="CreateProfile">Update Profile</a>
+    </div>
+    <div class="row-cols-4">
+            <a asp-action="PostedJobs">Check your advertised positions</a>
+    </div>
+    <div class="row-cols-4">
+            <a asp-controller = "Jobs" asp-action="Post">Post a job</a>
+    </div>
+</div>
+<div class="space-div"></div>
+</div>

@@ -5,12 +5,10 @@ namespace JobPortal.Models
     public class JobRepository : IJobRepository
     {
         private readonly JobPortalDbContext _jobPortalDbContext;
-        private readonly IEmployerRepository _employerRepository;
         private readonly ISkillSetRepository _skillSetRepository;
         private readonly ISkillRepository _skillRepository;
-        public JobRepository(JobPortalDbContext jobPortalDbContext,IEmployerRepository employerRepository, ISkillSetRepository skillSetRepository,ISkillRepository skillRepository) {
+        public JobRepository(JobPortalDbContext jobPortalDbContext, ISkillSetRepository skillSetRepository,ISkillRepository skillRepository) {
         _jobPortalDbContext = jobPortalDbContext;
-        _employerRepository = employerRepository;
         _skillSetRepository = skillSetRepository;
         _skillRepository = skillRepository;
         }
@@ -21,17 +19,23 @@ namespace JobPortal.Models
                 return _jobPortalDbContext.Jobs.Include(e => e.Employer).Include(e => e.SkillSet).ThenInclude(e => e.Skills);
             }
         }
+        public List<Job> GetJobsByEmployer(Employer employer)
+        {  if (employer == null)
+                return new List<Job>();
+            return _jobPortalDbContext.Jobs.Where(e => e.Employer == employer).Include(e => e.SkillSet).ThenInclude(e => e.Skills).ToList();
 
+        }
+       
         public void CreateJob(Job myJob,List<Skill> mySkillList,Employer myEmployer)
         {    
             myJob.CreatedDate = DateTime.Now;
             SkillSet mySkillSet = new SkillSet();
-          /*  foreach (Skill skill in mySkillList)
-            {  
+            foreach (Skill skill in mySkillList)
+            {
                 skill.SkillSets = (ICollection<SkillSet>)mySkillSet;
                 _skillRepository.AddSkill(skill);
-                
-            }*/
+
+            }
             _skillSetRepository.AddSkillSet(mySkillSet,mySkillList);
             
             myJob.SkillSet = mySkillSet;
@@ -39,8 +43,17 @@ namespace JobPortal.Models
             _jobPortalDbContext.Jobs.Add(myJob);
             _jobPortalDbContext.SaveChanges();
         }
-
         
+        public void DeleteJob(Job job)
+        {
+            _jobPortalDbContext.Jobs.Remove(job);
+            _jobPortalDbContext.SaveChanges();
+        }
+
+        public Job GetJobById(int id)
+        {
+            return _jobPortalDbContext.Jobs.Where(p => p.JobId == id).FirstOrDefault();
+        }
 
         public IEnumerable<Job> JobsByLocation(string location)
         {

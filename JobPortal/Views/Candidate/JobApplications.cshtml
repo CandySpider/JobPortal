@@ -1,0 +1,28 @@
+﻿@model List<Application>
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>JobTitle</th>
+                <th>Company Name</th>
+                <th>Job Location</th>
+                <th>Application Deadline</th>
+                <th>Application Date</th>
+                <th>Manage</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Application i in Model)
+        {
+            <tr>
+                <td>@i.Job.JobTitle</td>
+                <td>@i.Job.CompanyName</td>
+                <td>@i.Job.Location</td>
+                <td>@i.Job.ApplicationDeadline</td>
+                <td>@i.ApplicationDate</td>
+                <td><a asp-action="Withdraw" asp-route-id="@i.ApplicationId" class="link-dark">Withdraw application</a></td>
+            </tr>
+        }  
+        </tbody>
+    </table>
+</div>

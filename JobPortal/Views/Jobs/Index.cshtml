@@ -7,7 +7,7 @@
         {<div class="card-body">
             <div class="row">
                 <div class="col-md-2">
-                    <img src="@i.Employer.ProfilePictureUrl" alt="Company Logo" class="img-fluid">
+                            <img src="/images/profilePhotos/@i.Employer.ProfilePictureUrl" alt="Company Logo" class="img-fluid">
                 </div>
                 <div class="col-md-10">
                     <h5 class="card-title">@i.JobTitle</h5>
@@ -22,7 +22,7 @@
                                                 {<li>@j.SkillName</li>}
                         }
                     </ul>
-                    <a href="#" class="card-link">Apply Now</a>
+                    <a asp-action="Apply" asp-route-id="@i.JobId" >Apply Now</a>
                 </div>
             </div>
         </div>

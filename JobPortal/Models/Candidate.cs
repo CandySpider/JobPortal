@@ -17,10 +17,10 @@ namespace JobPortal.Models
         public string? ProfilePhotoUrl { get; set; }
         public string? ResumeFileUrl { get; set; }
 
-        public ICollection<Application> Applications { get; } = new List<Application>();
         public string? ApplicationUserId { get; set; }
         [ForeignKey(nameof(ApplicationUserId))]
         public  ApplicationUser? ApplicationUser { get; set; }
+        public ICollection<Application> Applications { get; } = new List<Application>();
 
     }
 }

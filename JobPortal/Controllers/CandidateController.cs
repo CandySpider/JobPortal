@@ -5,10 +5,12 @@ namespace JobPortal.Controllers
 {
     public class CandidateController : Controller
     {   private readonly ICandidateRepository _candidateRepository;
+        private readonly IApplicationRepository _applicationRepository;
         private readonly IWebHostEnvironment _serverEnvironment;
-        public CandidateController (ICandidateRepository candidateRepository,IWebHostEnvironment serverEnvironment)
+        public CandidateController (ICandidateRepository candidateRepository,IWebHostEnvironment serverEnvironment,IApplicationRepository applicationRepository)
         {
             _candidateRepository = candidateRepository;
+            _applicationRepository = applicationRepository;
             _serverEnvironment = serverEnvironment;
         }
         [Authorize(Roles ="Candidate")]
@@ -20,11 +22,6 @@ namespace JobPortal.Controllers
                 throw new Exception("No candidate");
             else
                 return View(myCandidate);
-        }
-
-        public HttpRequest GetRequest()
-        {
-            return Request;
         }
 
         [HttpPost]
@@ -60,7 +57,7 @@ namespace JobPortal.Controllers
 
             }
             else
-                throw new Exception("IFormFile doesn't work");
+                throw new Exception("The file is non-existent or empty!");
             var myString = new String("ProfilePhotoUpload"); 
             return RedirectToAction("UploadSuccessful");
         }
@@ -122,6 +119,20 @@ namespace JobPortal.Controllers
         { 
             return View(myString); 
         }
+        [Authorize(Roles = "Candidate")]
+        [HttpGet]
+        public IActionResult JobApplications()
+        {   Candidate myCandidate = _candidateRepository.GetCandidateByUserName(User.Identity.Name);
+            List<Application> myApplications = (List<Application>)_applicationRepository.GetApplicationsByCandidateId(myCandidate.CandidateId);
+            return View(myApplications);
+        }
 
+        [Authorize(Roles = "Candidate")]
+        [Route("CandidateController/Withdraw/{id}")]
+        public IActionResult Withdraw([FromRoute] int id)
+        {
+            _applicationRepository.DeleteApplication(id);
+            return RedirectToAction("JobApplications");
+        }
     }
 }

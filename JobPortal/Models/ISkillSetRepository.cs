@@ -2,8 +2,8 @@
 {
     public interface ISkillSetRepository
     {
-        public SkillSet GetSkillSetById(int skillSetId);
-        public IEnumerable<SkillSet> AllSkillSets ();
-        public void AddSkillSet(SkillSet skillSet,List<Skill> skills);
+        SkillSet GetSkillSetById(int skillSetId);
+        IEnumerable<SkillSet> AllSkillSets ();
+        void AddSkillSet(SkillSet skillSet,List<Skill> skills);
     }
 }
