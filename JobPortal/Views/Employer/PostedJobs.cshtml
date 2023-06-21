@@ -15,6 +15,7 @@ else
                     <div class="row">
                         <div class="col-md-10">
                             <h5 class="card-title">@i.JobTitle</h5>
+                            <button class="navbar-button"><a asp-action="Applicants" asp-route-id="@i.JobId" class="link-dark">Check your candidates</a></button>
                             <p class="card-text">@i.Location</p>
                             <p class="card-text">@i.JobDescription</p>
                             <p class="card-text">Experience Level: Junior/Intermediate/Senior</p>
@@ -28,12 +29,13 @@ else
                                     }
                                 }
                             </ul>
-                            <button class="navbar-button"><a asp-action="DeleteJobPosting" asp-route-id="@i.JobId">Delete</a></button>
+                            <button class="navbar-button"><a asp-action="DeleteJobPosting" asp-route-id="@i.JobId" class="link-dark">Delete</a></button>
                         </div>
                     </div>
                 </div>
             }
         </div>
+        <div class="space-div"></div>
     </div>
 </div>
 }

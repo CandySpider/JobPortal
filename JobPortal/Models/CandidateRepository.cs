@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+
 namespace JobPortal.Models
 {
     public class CandidateRepository : ICandidateRepository
@@ -21,10 +22,7 @@ namespace JobPortal.Models
             return _jobPortalDbContext.Candidates.Where(e => e.CandidateName.Contains(name)).ToList();
         }
 
-        public ICollection<Candidate> GetCandidates()
-        {  
-            return _jobPortalDbContext.Candidates.ToList();
-        }
+       
 
         public void CreateCandidate(string idUser, string phoneNumber, string name)
         {
@@ -56,5 +54,6 @@ namespace JobPortal.Models
             myCandidate.PhoneNumber = phoneNumber;
             _jobPortalDbContext.SaveChanges();
         }
+
     }
 }

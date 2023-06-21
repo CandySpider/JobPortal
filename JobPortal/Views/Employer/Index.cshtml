@@ -3,8 +3,13 @@
 <div class = "container user-container">
     @if (Model != null)
     {
-        <div class="row-cols-2"><h2>Employer name: @Model.ProfileName</h2></div>
-        <div class="row-cols-2"><h2>Company description: @Model.ProfileDescription</h2></div>
+        <div class="row-cols-2">
+            <h2>Employer name: @Model.ProfileName</h2>
+        </div>
+        <div class="row-cols-2">
+            <h2>Company description:</h2>
+            <div>@Model.ProfileDescription</div>
+         </div>
         <div class="row-cols-4">
             <h2>Profile Photo</h2>
             <img src="/images/profilePhotos/@Model.ProfilePictureUrl" alt="company profile picture" />

@@ -26,7 +26,7 @@ namespace JobPortal.Models
 
         public List<Application> GetApplicationsByJobId(int jobId)
         {
-            return _jobPortalDbContext.Applications.Where(p => p.JobId == jobId).ToList();
+            return _jobPortalDbContext.Applications.Where(p => p.JobId == jobId).Include(e => e.Candidate).ToList();
         }
         
         public List<Application> GetApplicationsByCandidateId(int candidateId) 

@@ -32,7 +32,6 @@ namespace JobPortal.Models
             SkillSet mySkillSet = new SkillSet();
             foreach (Skill skill in mySkillList)
             {
-                skill.SkillSets = (ICollection<SkillSet>)mySkillSet;
                 _skillRepository.AddSkill(skill);
 
             }

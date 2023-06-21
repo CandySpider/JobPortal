@@ -8,12 +8,16 @@ namespace JobPortal.Controllers
     {
         IEmployerRepository _employerRepository;
         IJobRepository _jobRepository;
+        ICandidateRepository _candidateRepository;
+        IApplicationRepository _applicationRepository;
         IWebHostEnvironment _serverEnvironment;
-        public EmployerController(IEmployerRepository employerRepository, IWebHostEnvironment serverEnvironment, IJobRepository jobRepository)
+        public EmployerController(IEmployerRepository employerRepository, IWebHostEnvironment serverEnvironment, IJobRepository jobRepository,ICandidateRepository candidateRepository, IApplicationRepository applicationRepository)
         {
             _employerRepository = employerRepository;
             _serverEnvironment = serverEnvironment;
             _jobRepository = jobRepository;
+            _candidateRepository = candidateRepository;
+            _applicationRepository = applicationRepository;
         }
         [Authorize(Roles = "Employer")]
         [HttpGet]
@@ -96,6 +100,15 @@ namespace JobPortal.Controllers
                 _jobRepository.DeleteJob(myJob);
             }
             return RedirectToAction("PostedJobs");
+        }
+
+        [Authorize(Roles ="Employer")]
+        [HttpGet]
+        [Route("/EmployerController/Applicants/{id}")]
+        public IActionResult Applicants([FromRoute] int id)
+        {
+           var something = _applicationRepository.GetApplicationsByJobId(id);
+            return View(something);
         }
 
     }

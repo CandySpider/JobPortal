@@ -36,9 +36,9 @@
         <div class="col-12">
             <label asp-for="Job.JobType">Work arrangement</label>
             <select asp-for="Job.JobType" class="form-control" required>
-                <option value="option1">Remote</option>
-                <option value="option2">Hybrid</option>
-                <option value="option3">On-site</option>
+                <option value="Remote">Remote</option>
+                <option value="Hybrid">Hybrid</option>
+                <option value="On-site">On-site</option>
             </select>
             <span asp-validation-for="Job.JobType" class="text-danger"></span>
         </div>

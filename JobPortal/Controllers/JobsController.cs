@@ -43,8 +43,6 @@ namespace JobPortal.Controllers
             var myEmployer = _employerRepository.GetEmployerByUserName(User.Identity.Name);
             if (ModelState.IsValid && myEmployer!=null)
             {
-
-
                 _jobRepository.CreateJob(myJopPostingViewModel.Job, myJopPostingViewModel.SkillList, myEmployer);
                 return RedirectToAction("PostComplete");
             }

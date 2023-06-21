@@ -1,0 +1,26 @@
+﻿@model List<Application>
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Phone number</th>
+                <th>Resume</th>
+                <th>Application Date</th>
+                <th>Manage</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Application i in Model)
+            {
+                <tr>
+                    <td>@i.Candidate.CandidateName</td>
+                    <td>@i.Candidate.PhoneNumber</td>
+                    <td><a href="~/resumes/@i.Candidate.ResumeFileUrl">Resume</a></td>
+                    <td>@i.ApplicationDate</td>
+                    <td><a asp-action="Withdraw" asp-route-id="@i.ApplicationId" class="link-dark">Remove candidate</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

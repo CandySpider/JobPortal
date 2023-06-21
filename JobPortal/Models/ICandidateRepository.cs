@@ -2,7 +2,7 @@
 {
     public interface ICandidateRepository
     { 
-        ICollection<Candidate> GetCandidates();
+   
         ICollection<Candidate> GetCandidateByName(string name);
         Candidate GetCandidateByUserName(string name);
 
