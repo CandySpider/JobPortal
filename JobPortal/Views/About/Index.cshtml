@@ -1,22 +1,13 @@
-﻿<div class="row">
+﻿@using JobPortal.ViewModels;
+@model AboutViewModel;
+<div class="row">
     <div class="col-md-6">
         <img src="images/job-seekers.jpg" alt="Job Seekers" class="img-fluid">
     </div>
     <div class="col-md-6">
         <h2>For Job Seekers</h2>
         <p>
-            Are you looking for your dream job? Look no further! Our job portal company provides a wide range of
-            job opportunities in various industries and professions. Our user-friendly platform allows you to
-            create a profile, upload your resume, and search for job openings that match your skills and
-            preferences. You can also set up job alerts to receive notifications when new jobs that match your
-            criteria are posted. With our extensive network of employers, you'll have access to a diverse range
-            of job opportunities to take your career to the next level.
-        </p>
-        <p>
-            We also offer additional resources such as career advice, interview tips, and resume building
-            tools to help you succeed in your job search. Our team of experts is dedicated to providing support
-            and guidance throughout your job search journey. Join our job portal community today and discover
-            your next career move!
+            @Model.Info1
         </p>
     </div>
 </div>
@@ -27,18 +18,7 @@
     <div class="col-md-6">
         <h2>For Employers</h2>
         <p>
-            Finding the right talent for your organization is crucial for success. Our job portal company
-            offers a comprehensive platform for employers to post job openings, review resumes, and connect
-            with qualified candidates. Our advanced search filters and matching algorithms ensure that you can
-            find the most suitable candidates for your job requirements. You can also manage your job postings,
-            track applications, and communicate with candidates seamlessly through our platform.
-        </p>
-        <p>
-            We understand that every organization has unique hiring needs, and our team can work with you to
-            create customized recruitment solutions tailored to your business. Our wide reach and extensive
-            database of job seekers ensure that you can access top talent from various industries and
-            professions. Partner with us to streamline your hiring process and find the best candidates for your
-            team!
+            @Model.Info2
         </p>
     </div>
     <div class="col-md-6">

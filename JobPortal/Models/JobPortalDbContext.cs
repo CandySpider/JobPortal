@@ -12,6 +12,7 @@ namespace JobPortal.Models
         public DbSet<SkillSet> SkillSets { get; set; } = null!;
         public DbSet<Skill> Skills { get; set; } = null!;
         public DbSet<Employer> Employers { get; set; } = null!;
+        public DbSet<About> Abouts { get; set; } = null!;
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

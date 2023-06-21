@@ -1,0 +1,21 @@
+﻿@using JobPortal.ViewModels;
+@model AboutViewModel
+<div class="container">
+    <h1>Modify the about section content</h1>
+    <form class="form-check" asp-action="Update" method="post" role="form">
+        <div class="col-8">
+            <label asp-for="Info1">First text</label>
+            <input asp-for="Info1" type="text" class="form-control" required>
+            <span asp-validation-for="Info1" class="text-danger"></span>
+        </div>
+        <div class="col-8">
+            <label asp-for="Info2">Second text</label>
+            <input asp-for="Info2" type="text" class="form-control" required>
+            <span asp-validation-for="Info2" class="text-danger"></span>
+       </div>
+
+
+
+        <input type="submit" class="btn navbar-button" value="Submit">
+    </form>
+</div>

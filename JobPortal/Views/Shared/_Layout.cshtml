@@ -33,6 +33,10 @@
             <li></li>
             <li><a asp-controller="Contact" asp-action="Index" class="nav-link px-2 navbar-text2">Contact</a></li>
             <li><a asp-controller="About" asp-action="Index" class="nav-link px-2 navbar-text2">About</a></li>
+            @if(User.IsInRole("Admin"))
+            {
+                <li><a asp-controller="About" asp-action="Update" class="nav-link px-2 navbar-text2">Update About</a></li>
+            }
           
         </ul>
 

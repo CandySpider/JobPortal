@@ -25,6 +25,7 @@ builder.Services.AddScoped<ISkillRepository,SkillRepository>();
 builder.Services.AddScoped<IApplicationRepository,ApplicationRepository>();
 builder.Services.AddScoped<IEmployerRepository,EmployerRepository>();
 builder.Services.AddScoped<ICandidateRepository,CandidateRepository>();
+builder.Services.AddScoped<IAboutRepository,AboutRepository>();
 var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
